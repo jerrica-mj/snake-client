@@ -16,6 +16,13 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log('Server: ', data);
   });
+  // carry out events as soon as the connection is made
+  conn.on('connect', () => {
+    // log a message to the client on connecting
+    console.log("Successfully connected to game server");
+    // send player name/initials (max 3 alphanumerics)
+    conn.write("Name: JJ");
+  });
   return conn;
 };
 
