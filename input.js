@@ -1,7 +1,9 @@
 /**
  * Setup User Interface
  * Specifically to handle user input via stdin
- **/
+**/
+
+const messages = require('./constants');
 
 // Stores the active TCP connection object
 // used to write messages to the server
@@ -15,28 +17,14 @@ const handleUserInput = (keyPress) => {
   if (keyPress === '\u0003') {
     process.exit();
   }
-  // enable WASD movement
-  // send "Move: __" command accordingly
-  if (keyPress === 'w') {
-    connection.write("Move: up");
-  } else if (keyPress === 'a') {
-    connection.write("Move: left");
-  } else if (keyPress === 's') {
-    connection.write("Move: down");
-  } else if (keyPress === 'd') {
-    connection.write("Move: right");
-  }
-  // Implement some special keys to send canned messages to the server to everyone to see
-  else if (keyPress === 'u') {
-    connection.write("Say: You gotta do better!");
-  }  else if (keyPress === 'j') {
-    connection.write("Say: Eat my dust!");
-  }  else if (keyPress === 'h') {
-    connection.write("Say: Having a great time!");
-  }  else if (keyPress === 'i') {
-    connection.write("Say: I'm gonna get it!");
-  }  else if (keyPress === 'n') {
-    connection.write("Say: Nice work!");
+  // Select and send message to the server based on keyPress
+  // WASD movement enabled
+  // Canned messages to everyone enabled with U,J,H,I,N
+  const letter = keyPress.toUpperCase();
+  // Handle unassigned keyPress
+  // Only write to server if valid message key
+  if (messages[letter]) {
+    connection.write(messages[letter]);
   }
 };
 
