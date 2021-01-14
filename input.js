@@ -26,6 +26,18 @@ const handleUserInput = (keyPress) => {
   } else if (keyPress === 'd') {
     connection.write("Move: right");
   }
+  // Implement some special keys to send canned messages to the server to everyone to see
+  else if (keyPress === 'u') {
+    connection.write("Say: You gotta do better!");
+  }  else if (keyPress === 'j') {
+    connection.write("Say: Eat my dust!");
+  }  else if (keyPress === 'h') {
+    connection.write("Say: Having a great time!");
+  }  else if (keyPress === 'i') {
+    connection.write("Say: I'm gonna get it!");
+  }  else if (keyPress === 'n') {
+    connection.write("Say: Nice work!");
+  }
 };
 
 const setupInput = function(conn) {
