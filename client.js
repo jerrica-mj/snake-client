@@ -20,19 +20,7 @@ const connect = function() {
     console.log("Successfully connected to game server");
     // send player name/initials (max 3 alphanumerics)
     conn.write("Name: JJ");
-
-
-    // // send "Move: up" command to server
-    // const moving = () => {
-    //   conn.write("Move: up");
-    //   setTimeout(moving, 500);
-    // }
-    // setTimeout(moving, 500);
   });
-  // conn.on('connect', () => {
-  //   // send "Move: up" command to server on connection
-  //   conn.write("Move: up");
-  // });
   return conn;
 };
 
